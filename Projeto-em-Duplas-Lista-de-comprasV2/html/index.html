@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercadão Brothers</title>
+    <link rel="shortcut icon" href="../img/logoBrothers.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <nav>
+        <img src="../img/logoBrothers.png" alt="logoBrothers">
+        <div class="menu-lateral fechado">
+            <header>
+                <h3>Filtros</h3>
+                <i class="fa-solid fa-sort-down" id="botao_menu"></i>
+            </header>
+            <!-- colocar labels nos filtros -->
+            <ul>
+                <ul>
+                    <li>
+                        <label for="filtros-alimentos" class="filtros">
+                            <input type="checkbox" name="filtros" value="alimentos" id="filtros-alimentos"> Alimentos
+                        </label>
+                    </li>
+                    <li>
+                        <label for="filtros-produtos-limpeza" class="filtros">
+                            <input type="checkbox" name="filtros" value="produtos_limpeza" id="filtros-produtos-limpeza"> Produtos de limpeza
+                        </label>
+                    </li>
+                    <li>
+                        <label for="filtros-brinquedos" class="filtros">
+                            <input type="checkbox" name="filtros" value="brinquedos" id="filtros-brinquedos"> Brinquedos
+                        </label>
+                    </li>
+                </ul>
+            </ul>
+            <div class="acoes-menu-lateral">
+                <button onclick="filtrarProdutos()">Aplicar filtros</button>
+                <button onclick="removerFiltros()">Remover filtros</button>
+            </div>
+        </div>
+
+        <div class="conteiner-barra-pesquisa">
+            <label for="barra_pesquisa" class="barra-pesquisa">
+                <input type="search" name="pesquisa" id="barra_pesquisa" placeholder="Pesquise aqui..." />
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+        </div>
+        <div class="menu-usuario">
+            <i class="fa-solid fa-circle-user"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+    </nav>
+
+    <main></main>
+
+    <script src="../scripts/index.js"></script>
+    <script src="https://kit.fontawesome.com/bf19b5ff3e.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
