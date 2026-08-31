@@ -209,3 +209,5 @@ botaoAlternarMenuLateral.addEventListener("click", () => {
 
 inicializarProdutos();
 mostrarProdutosTela();
+
+export { LISTA_PRODUTOS, mostrarProdutosTela };
