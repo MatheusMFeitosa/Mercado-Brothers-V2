@@ -20,27 +20,93 @@
             <!-- colocar labels nos filtros -->
             <ul>
                 <ul>
+                    <!-- ALIMENTOS -->
                     <li>
                         <label for="filtros-alimentos" class="filtros">
-                            <input type="checkbox" name="filtros" value="alimentos" id="filtros-alimentos"> Alimentos
+                            <input type="checkbox" name="filtros" value="alimentos" id="filtros-alimentos">
+                            Alimentos
                         </label>
+
+                        <div class="subFiltros">
+                            <label for="filtros-hortifruti">
+                                <input type="checkbox" name="subFiltros" value="hortifruti" id="filtros-hortifruti">
+                                Hortifruti
+                            </label>
+
+                            <label for="filtros-vegetais">
+                                <input type="checkbox" name="subFiltros" value="vegetais" id="filtros-vegetais">
+                                Vegetais
+                            </label>
+
+                            <label for="filtros-graos">
+                                <input type="checkbox" name="subFiltros" value="grãos" id="filtros-graos">
+                                Grãos
+                            </label>
+
+                            <label for="filtros-leguminosas">
+                                <input type="checkbox" name="subFiltros" value="leguminosas" id="filtros-leguminosas">
+                                Leguminosas
+                            </label>
+
+                            <label for="filtros-mercearia">
+                                <input type="checkbox" name="subFiltros" value="mercearia" id="filtros-mercearia">
+                                Mercearia
+                            </label>
+
+                            <label for="filtros-farinhas">
+                                <input type="checkbox" name="subFiltros" value="farinhas" id="filtros-farinhas">
+                                Farinhas
+                            </label>
+
+                            <label for="filtros-cereais">
+                                <input type="checkbox" name="subFiltros" value="cereais" id="filtros-cereais">
+                                Cereais
+                            </label>
+                        </div>
                     </li>
+
+                    <!-- PRODUTOS DE LIMPEZA -->
                     <li>
                         <label for="filtros-produtos-limpeza" class="filtros">
-                            <input type="checkbox" name="filtros" value="produtos_limpeza" id="filtros-produtos-limpeza"> Produtos de limpeza
+                            <input type="checkbox" name="filtros" value="limpeza" id="filtros-produtos-limpeza">
+                            Produtos de limpeza
                         </label>
+
+                        <div class="subFiltros">
+                            <label for="filtros-cozinha">
+                                <input type="checkbox" name="subFiltros" value="cozinha" id="filtros-cozinha">
+                                Cozinha
+                            </label>
+
+                            <label for="filtros-detergentes">
+                                <input type="checkbox" name="subFiltros" value="detergentes" id="filtros-detergentes">
+                                Detergentes
+                            </label>
+
+                            <label for="filtros-lavanderia">
+                                <input type="checkbox" name="subFiltros" value="lavanderia" id="filtros-lavanderia">
+                                Lavanderia
+                            </label>
+
+                            <label for="filtros-saboes">
+                                <input type="checkbox" name="subFiltros" value="sabões" id="filtros-saboes">
+                                Sabões
+                            </label>
+                        </div>
                     </li>
+
+                    <!-- BRINQUEDOS -->
                     <li>
                         <label for="filtros-brinquedos" class="filtros">
-                            <input type="checkbox" name="filtros" value="brinquedos" id="filtros-brinquedos"> Brinquedos
+                            <input type="checkbox" name="filtros" value="brinquedos" id="filtros-brinquedos">
+                            Brinquedos
                         </label>
                     </li>
                 </ul>
-            </ul>
-            <div class="acoes-menu-lateral">
-                <button onclick="filtrarProdutos()">Aplicar filtros</button>
-                <button onclick="removerFiltros()">Remover filtros</button>
-            </div>
+                <div class="acoes-menu-lateral">
+                    <button onclick="filtrarProdutos()">Aplicar filtros</button>
+                    <button onclick="removerFiltros()">Remover filtros</button>
+                </div>
         </div>
 
         <div class="conteiner-barra-pesquisa">
@@ -59,6 +125,7 @@
 
     <script type="module" src="../scripts/index.js"></script>
     <script type="module" src="../scripts/barraPesquisa.js"></script>
+    <script type="module" src="../scripts/produtos.js"></script>
     <script src="https://kit.fontawesome.com/bf19b5ff3e.js" crossorigin="anonymous"></script>
 </body>
 

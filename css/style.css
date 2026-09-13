@@ -167,12 +167,11 @@ nav ul {
     justify-content: space-between;
     flex-direction: column;
 
-    height: 50%;
+    height: 80%;
 
     color: var(--branco);
-
     list-style: none;
-    font-size: larger;
+
     text-transform: capitalize;
 }
 
@@ -190,6 +189,16 @@ nav ul label.filtros input{
     background-color: var(--amarelo);
 
     height: 20px;
+}
+
+nav ul .subFiltros{
+    display: flex;
+    flex-direction: column;
+
+    font-size: small;
+
+
+    padding-left: 10%;
 }
 
 .acoes-menu-lateral {

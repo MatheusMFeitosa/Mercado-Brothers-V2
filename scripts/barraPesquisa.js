@@ -1,10 +1,10 @@
-import { mostrarProdutosTela } from './index.js';
+import { mostrarProdutosTela, LISTA_PRODUTOS } from './produtos.js';
 
 const inputSearch = document.getElementById("barra_pesquisa")
 const iconeSearch = document.querySelector(".fa-magnifying-glass")
 
 inputSearch.addEventListener("input", () => {
-    mostrarProdutosTela()
+    mostrarProdutosTela(LISTA_PRODUTOS)
      conductResearch(inputSearch.value)
 })
 
