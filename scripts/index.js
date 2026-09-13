@@ -33,22 +33,19 @@ function adicionarQuantidadeProduto(nomeProduto, quantidadeEscolhida) {
 
     if (valor) {
         let listaOriginal = JSON.parse(valor);
-
         listaOriginal["quantidade"] = quantidadeEscolhida;
-
         localStorage.setItem(nomeProduto, JSON.stringify(listaOriginal));
-
         alert(`${nomeProduto} adicionado ao carrinho!`);
     }
 }
 
-function mostrarProdutosTela() {
+function mostrarProdutosTela(produtosTela = LISTA_PRODUTOS) {
     const main = document.querySelector("main");
     main.replaceChildren();
 
     let categorias = [];
-    for (let i = 0; i < LISTA_PRODUTOS.length; i++) {
-        let categoriaAtual = LISTA_PRODUTOS[i].categoria;
+    for (let i = 0; i < produtosTela.length; i++) {
+        let categoriaAtual = produtosTela[i].categoria;
         if (!categorias.includes(categoriaAtual)) {
             categorias.push(categoriaAtual);
         }
@@ -70,9 +67,9 @@ function mostrarProdutosTela() {
         secaoCategoria.append(tituloCategoria);
         secaoCategoria.append(divListaProdutos);
 
-        for (let j = 0; j < LISTA_PRODUTOS.length; j++) {
-            if (LISTA_PRODUTOS[j].categoria === categoria) {
-                adicionarProdutoHTML(LISTA_PRODUTOS[j], divListaProdutos);
+        for (let j = 0; j < produtosTela.length; j++) {
+            if (produtosTela[j].categoria === categoria) {
+                adicionarProdutoHTML(produtosTela[j], divListaProdutos);
             }
         }
 
@@ -167,12 +164,16 @@ function adicionarProdutoHTML(produto, containerDestino) {
 }
 
 
+// Window pois como colocamos a tag script esta configurada como type="module", as funçoes ficam isoladas dentro
+// do arquivo e os botoes perdem o acesso a elas. 
 
-function filtrarProdutos() {
-    const radioSelecionado = document.querySelector('checkbox[name="filtros"]:checked');
-    if (!radioSelecionado) return;
+window.filtrarProdutos = function() {
+    const filtroSelecionado = document.querySelectorAll('input[name="filtros"]:checked');
+    
 
-    const categoriaSelecionada = radioSelecionado.value;
+    if (!filtroSelecionado) return;
+
+    const categoriaSelecionada = filtroSelecionado.value;
     const secoes = document.querySelectorAll(".conteiner-categoria");
 
     secoes.forEach((secao) => {
@@ -184,9 +185,9 @@ function filtrarProdutos() {
     });
 }
 
-function removerFiltros() {
-    const radios = document.querySelectorAll('checkbox[name="filtros"]');
-    radios.forEach((radio) => radio.checked = false);
+window.removerFiltros = function() {
+    const filtros = document.querySelectorAll('input[name="filtros"]');
+    filtros.forEach((checkBox) => checkBox.checked = false);
 
     const secoes = document.querySelectorAll(".conteiner-categoria");
     secoes.forEach((secao) => secao.style.display = "flex");

@@ -1,4 +1,4 @@
-import { LISTA_PRODUTOS, mostrarProdutosTela } from './index.js';
+import { mostrarProdutosTela } from './index.js';
 
 const inputSearch = document.getElementById("barra_pesquisa")
 const iconeSearch = document.querySelector(".fa-magnifying-glass")
@@ -11,24 +11,24 @@ inputSearch.addEventListener("input", () => {
     }
 })
 
-inputSearch.addEventListener("keydown", function (event) {
-    if (event.key === 'Enter') {
-        if (inputSearch.value != "") {
-            conductResearch(inputSearch.value)
-        }
-    }
-    else {
-        mostrarProdutosTela()
-    }
-})
+// inputSearch.addEventListener("keydown", function (event) {
+//     if (event.key === 'Enter') {
+//         if (inputSearch.value != "") {
+//             conductResearch(inputSearch.value)
+//         }
+//     }
+//     else {
+//         mostrarProdutosTela()
+//     }
+// })
 
-iconeSearch.addEventListener("click", () => {
-    if (inputSearch.value != "") {
-        conductResearch(inputSearch.value)
-    } else {
-        mostrarProdutosTela()
-    }
-})
+// iconeSearch.addEventListener("click", () => {
+//     if (inputSearch.value != "") {
+//         conductResearch(inputSearch.value)
+//     } else {
+//         mostrarProdutosTela()
+//     }
+// })
 
 function conductResearch(researchValue) {
     const namesOfAllProducts = document.querySelectorAll(".nomeProduto")
@@ -71,3 +71,5 @@ function applySearch(productsFound) {
         }
     }
 }
+
+// Esta dando um erro deu quando aperto (Ctrl, Alt e Shift...) ele reseta a pesquisa e aparece todos os produtos.
