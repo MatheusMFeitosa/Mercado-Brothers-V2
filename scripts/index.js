@@ -14,6 +14,12 @@ botaoCarrinho.addEventListener("click", () => {
     window.location.href = "carrinho.html"
 });
 
+const botaoLogin = document.querySelector(".fa-circle-user");
+
+botaoLogin.addEventListener("click", () => {
+    window.location.href = "loginUsuario.html" 
+});
+
 function inicializarProdutos() {
     for (let i = 0; i < LISTA_PRODUTOS.length; i++) {
         let nomeDoProduto = LISTA_PRODUTOS[i].nomeProduto;

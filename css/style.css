@@ -547,3 +547,104 @@ main {
 .carrinho .finalizar-compra:hover {
     opacity: 0.8;
 }
+
+/* --- ESTILO LOGIN & ESTILO CADASTRO USUARIO --- */
+.login-usuario, .cadastro-usuario {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+        
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.login-usuario i.fa-circle-user {
+    position: absolute;
+    top: -35px;
+
+    font-size: 4rem;
+    border-radius: 50%;
+
+    background-color: var(--azul);
+}
+
+.formulario-login, .formulario-cadastro {
+    position: relative;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 35%;
+    padding: 40px;
+    gap: 15px;
+    border-radius: 30px;
+
+    color: var(--amarelo);
+    background-color: var(--azul);
+}
+
+.formulario-login h1, .formulario-cadastro h1 {
+    margin-bottom: 10px;
+}
+
+label.preencher {
+    display: flex;
+    align-items: center;
+
+    width: 90%;
+    padding: 10px;
+
+    color: var(--azul);
+    background-color: var(--branco);
+}
+
+label.preencher input {
+    appearance: none;
+    border: none;
+    outline: none;
+
+    width: 100%;
+    height: 100%;
+
+}
+
+label.preencher input::placeholder {
+    color: var(--azul);
+    background-color: var(--branco);    
+}
+
+.preencher i {
+    padding: 5px;
+    padding-right: 30px;
+}
+
+.login-usuario input.botao-enviar-formulario, .cadastro-usuario input.botao-enviar-formulario {
+    appearance: none;
+    border: none;
+    
+    width: 40%;
+    padding: 10px;
+    border-radius: 30px;
+    margin-top: 20px;
+
+    color: var(--azul);
+    background-color: var(--amarelo);
+
+    cursor: pointer;
+}
+
+.login-usuario a, .cadastro-usuario a {
+    color: var(--amarelo);
+}
+
+.login-usuario .erro, .cadastro-usuario .erro {
+    display: none;
+    
+    width: 85%;
+    
+    color: var(--vermelho);
+}
+
+
