@@ -45,6 +45,16 @@ const LISTA_PRODUTOS = [
     }
 ];
 
+function inicializarProdutos() {
+    for (let i = 0; i < LISTA_PRODUTOS.length; i++) {
+        let nomeDoProduto = LISTA_PRODUTOS[i].nomeProduto;
+
+        if (localStorage.getItem(nomeDoProduto) === null) {
+            localStorage.setItem(nomeDoProduto, JSON.stringify(LISTA_PRODUTOS[i]));
+        }
+    }
+}
+
 function mostrarProdutosTela(produtosTela) {
     const main = document.querySelector("main");
     main.replaceChildren();
@@ -239,7 +249,7 @@ window.removerFiltros = function() {
     mostrarProdutosTela(LISTA_PRODUTOS);
 }
 
-
+inicializarProdutos()
 mostrarProdutosTela(LISTA_PRODUTOS)
 
 export {mostrarProdutosTela, LISTA_PRODUTOS}
