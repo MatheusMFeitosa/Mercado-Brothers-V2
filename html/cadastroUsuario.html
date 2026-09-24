@@ -4,40 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <main class="cadastro-usuario">
-        <div class="formulario-cadastro">
-                <h1>CADASTRO</h1>
+        <form  class="formulario-cadastro">
+            <h1>CADASTRO</h1>
 
-                <label for="preencher_nome" class="preencher">
-                    <i class="fa-solid fa-user"></i>
-                    <input type="text" placeholder="Nome Usuário" id="preencher_nome">
-                </label>
+            <label for="preencher_nome" class="preencher">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="preencher_nome" onkeyup="validarCampoNome()" placeholder="Nome Usuário" required>
+            </label>
+            <div class="erro" id="erro_nome_obrigatorio">Nome de usuário é obrigatório</div>
+            <div class="erro" id="erro_nome_invalido">Nome inválido</div>
 
-                <label for="email" class="preencher">
-                    <i class="fa-solid fa-envelope"></i>
-                    <input type="email" placeholder="E-mail" id="email">
-                </label>
+            <label for="email" class="preencher">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" id="preencher_email" placeholder="E-mail"  required>
+            </label>
 
-                <label for="preencher_senha" class="preencher">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" placeholder="Senha" id="preencher_senha">
-                </label>
+            <label for="preencher_senha" class="preencher">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="preencher_senha" onkeyup="validarCampoSenha()" placeholder="Senha" required>
+            </label>
+            <div class="erro" id="erro_senha_obrigatorio">Senha é obrigatória</div>
+            <div class="erro" id="erro_senha_tamanho">A senha deve ter pelo menos 8 caracteres</div>
 
-                <label for="confirmar_senha" class="preencher">
-                    <i class="fa-solid fa-lock"></i>
-                    <input type="password" placeholder="Confirmar senha" id="confimar_senha">
-                </label>
+            <label for="confirmar_senha" class="preencher">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="preencher_confirmar_senha" onkeyup="validarCampoConfirmarSenha()" placeholder="Confirmar senha"  required>
+            </label>
+            <div class="erro" id="erro_senha_diferente">As senhas devem ser iguais</div>
 
-                <input type="submit" class="botao-enviar-formulario" value="CRIAR CONTA">
+            <input type="submit" id="botao_entrar" class="botao-enviar-formulario" disabled value="CRIAR CONTA">
 
-                <p>Já tem uma conta? <a href="loginUsuario.html">Clique para fazer o login</a></p>
-            </div>
+            <p>Já tem uma conta? <a href="loginUsuario.html">Clique para fazer o login</a></p>
+        </form>
     </main>
 
     <script src="https://kit.fontawesome.com/bf19b5ff3e.js" crossorigin="anonymous"></script>
+    <script src="../scripts/validarCampos.js"></script>
+    <script src="../scripts/validarCadastroUsuario.js"></script>
+    <script src="../scripts/cadastro.js"></script>
 </body>
+
 </html>

@@ -1,66 +1,26 @@
-const formulario = {
-    nome: () => document.getElementById("preencher_nome"),
-    senha: () => document.getElementById("preencher_senha"),
-    botaoEntrar: () => document.getElementById("botao_entrar"),
-    erroNomeObrigatorio: () => document.getElementById("erro_nome_obrigatorio"),
-    erroNomeInvalido: () => document.getElementById("erro_nome_invalido"),
-    erroSenhaObrigatorio: () => document.getElementById("erro_senha_obrigatorio"),
-    erroSenhaTamanho: () => document.getElementById("erro_senha_tamanho")
-};
+let LISTA_USUARIOS_CADASTRADOS = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-function validarCampoNome() {
-    alternarBotoesDesabilitados();
-    alternarErroNome();
-}
+function verificarLogin() {
+    const emailUsuario = document.getElementById("preencher_email").value.trim();
+    const senhaUsuario = document.getElementById("preencher_senha").value;
 
-function validarCampoSenha() {
-    alternarBotoesDesabilitados();
-    alterarErroSenha();
-}
-
-function validarNome() {
-    const nome = formulario.nome().value;
-    
-    if (!nome) {
-        return false;
+    for (let i = 0; i < LISTA_USUARIOS_CADASTRADOS.length; i++) {
+        if (emailUsuario === LISTA_USUARIOS_CADASTRADOS[i].email &&
+            senhaUsuario === LISTA_USUARIOS_CADASTRADOS[i].senha) {
+            return true;
+        }
     }
-    return validarNomeCompleto(nome);
+    return false;
 }
 
-function alternarErroNome() {
-    const nome = formulario.nome().value;
 
-    formulario.erroNomeObrigatorio().style.display = nome ? "none" : "block";
-    if (nome) {
-        formulario.erroNomeInvalido().style.display = validarNome() ? "none" : "block";
-    } else {
-        formulario.erroNomeInvalido().style.display = "none";
+const botaoEntrar = document.querySelector(".botao-enviar-formulario")
+
+botaoEntrar.addEventListener("click", (evento) =>{
+    evento.preventDefault();
+
+    if (!verificarLogin()) {
+        return alert("Seu e-mail ou senha estão incorretos");  
     }
-}
-
-function validarSenha(){
-    const senha = formulario.senha().value;
-    if (!senha){
-        return false;
-    }
-    return validarTamanhoSenha(senha);
-}
-
-function alterarErroSenha() {
-    const senha = formulario.senha().value;
-    
-    formulario.erroSenhaObrigatorio().style.display = senha ? "none" : "block";
-    if (senha) {
-        formulario.erroSenhaTamanho().style.display = validarSenha() ? "none" : "block";
-    } else {
-        formulario.erroSenhaTamanho().style.display = "none";
-    }
-}
-
-function alternarBotoesDesabilitados() {
-    const nomeValido = validarNome();
-    const senhaValida = validarSenha();
-
-    formulario.botaoEntrar().disabled = !nomeValido || !senhaValida;
-}
-
+    window.location.href = "index.html";
+})

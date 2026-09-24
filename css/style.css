@@ -633,6 +633,13 @@ label.preencher input::placeholder {
     background-color: var(--amarelo);
 
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-usuario input.botao-enviar-formulario:disabled, .cadastro-usuario input.botao-enviar-formulario:disabled{
+    opacity: 0.5;
+    filter: grayscale(70%);
+    cursor: auto;
 }
 
 .login-usuario a, .cadastro-usuario a {

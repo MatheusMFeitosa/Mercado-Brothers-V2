@@ -10,32 +10,29 @@
 
 <body>
     <main class="login-usuario">
-        <form class="formulario-login" onsubmit="event.preventDefault()">
+        <form  class="formulario-login">
             <i class="fa-solid fa-circle-user"></i>
             <h1>Login</h1>
 
-            <label for="preencher_nome" class="preencher">
-                <i class="fa-solid fa-user"></i>
-                <input type="text" id="preencher_nome" onkeyup="validarCampoNome()" placeholder="Nome Usuário">
+            <label for="email" class="preencher">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" id="preencher_email" placeholder="E-mail"  required>
             </label>
-            <div class="erro" id="erro_nome_obrigatorio">Nome de usuário é obrigatório</div>
-            <div class="erro" id="erro_nome_invalido">Nome inválido</div>
 
             <label for="preencher_senha" class="preencher">
                 <i class="fa-solid fa-lock"></i>
-                <input type="password" id="preencher_senha" onkeyup="validarCampoSenha()" placeholder="Senha">
+                <input type="password" id="preencher_senha" placeholder="Senha" required>
             </label>
             <div class="erro" id="erro_senha_obrigatorio">Senha é obrigatória</div>
-            <div class="erro" id="erro_senha_tamanho">A senha tem menos 8 caracteres</div>
+            <div class="erro" id="erro_senha_tamanho">A senha deve ter pelo menos 8 caracteres</div>
 
-            <input type="submit" class="botao-enviar-formulario" id="botao_entrar" disabled="true" value="ENTRAR">
+            <input type="submit" class="botao-enviar-formulario" id="botao_entrar"  value="ENTRAR" >
 
             <p>Não tem uma conta? <a href="cadastroUsuario.html">Clique para cadastrar</a></p>
         </form>
     </main>
 
     <script src="https://kit.fontawesome.com/bf19b5ff3e.js" crossorigin="anonymous"></script>
-    <script src="../scripts/validarCampos.js"></script>
     <script src="../scripts/login.js"></script>
 </body>
 

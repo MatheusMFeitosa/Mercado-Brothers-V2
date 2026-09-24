@@ -8,25 +8,6 @@ inputSearch.addEventListener("input", () => {
      conductResearch(inputSearch.value)
 })
 
-// inputSearch.addEventListener("keydown", function (event) {
-//     if (event.key === 'Enter') {
-//         if (inputSearch.value != "") {
-//             conductResearch(inputSearch.value)
-//         }
-//     }
-//     else {
-//         mostrarProdutosTela()
-//     }
-// })
-
-// iconeSearch.addEventListener("click", () => {
-//     if (inputSearch.value != "") {
-//         conductResearch(inputSearch.value)
-//     } else {
-//         mostrarProdutosTela()
-//     }
-// })
-
 function conductResearch(researchValue) {
     const namesOfAllProducts = document.querySelectorAll(".nomeProduto")
     console.log(researchValue)
