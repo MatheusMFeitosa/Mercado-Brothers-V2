@@ -1,23 +1,12 @@
 import {contadorItensCarrinho} from "./contadorCarrinho.js";
-
-const LISTA_PRODUTOS = [
-    { nomeProduto: "Tomate", precoProduto: 3.50, categoria: ["alimentos", "hortifruti", "vegetais"], quantidade: 0 },
-    { nomeProduto: "Feijao", precoProduto: 10.00, categoria: ["alimentos", "grãos", "leguminosas"], quantidade: 0 },
-    { nomeProduto: "Farinha", precoProduto: 5.00, categoria: ["alimentos", "mercearia", "farinhas"], quantidade: 0 },
-    { nomeProduto: "Arroz", precoProduto: 5.00, categoria: ["alimentos", "grãos", "cereais"], quantidade: 0 },
-    { nomeProduto: "Detergente", precoProduto: 2.50, categoria: ["limpeza", "cozinha", "detergentes"], quantidade: 0 },
-    { nomeProduto: "Sabao", precoProduto: 8.00, categoria: ["limpeza", "lavanderia", "sabões"], quantidade: 0 }
-];
+import { LISTA_PRODUTOS } from "./dadosProdutos.js";
 
 const botaoCarrinho = document.querySelector(".fa-cart-shopping");
-
 botaoCarrinho.addEventListener("click", () => {
     window.location.href = "carrinho.html"
 });
 
-
 const botaoLogin = document.querySelector(".fa-circle-user");
-
 botaoLogin.addEventListener("click", () => {
     window.location.href = "loginUsuario.html" 
 });
@@ -64,4 +53,6 @@ botaoAlternarMenuLateral.addEventListener("click", () => {
     }
 });
 
-export { LISTA_PRODUTOS, adicionarQuantidadeProduto};
+localStorage.clear()
+
+export { adicionarQuantidadeProduto };

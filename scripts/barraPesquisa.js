@@ -1,4 +1,6 @@
-import { mostrarProdutosTela, LISTA_PRODUTOS } from './produtos.js';
+import { mostrarProdutosTela } from './produtos.js';
+import { LISTA_PRODUTOS } from "./dadosProdutos.js";
+
 
 const inputSearch = document.getElementById("barra_pesquisa")
 const iconeSearch = document.querySelector(".fa-magnifying-glass")
@@ -10,7 +12,6 @@ inputSearch.addEventListener("input", () => {
 
 function conductResearch(researchValue) {
     const namesOfAllProducts = document.querySelectorAll(".nomeProduto")
-    console.log(researchValue)
     let productsFound = []
 
     for (let i = 0; i < namesOfAllProducts.length; i++) {
@@ -25,8 +26,6 @@ function conductResearch(researchValue) {
             })
         }
     }
-
-    console.log(productsFound)
 
     applySearch(productsFound)
 }

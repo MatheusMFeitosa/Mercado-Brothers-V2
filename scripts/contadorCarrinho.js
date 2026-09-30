@@ -1,19 +1,22 @@
-import { LISTA_PRODUTOS } from "./produtos.js";
+import { LISTA_PRODUTOS } from "./dadosProdutos.js";
 
 function contadorItensCarrinho() {
     let contador = 0;
 
     for (let i = 0; i < LISTA_PRODUTOS.length; i++) {
-        let produtoAtual = localStorage.getItem(LISTA_PRODUTOS[i].nomeProduto)
-        produtoAtual = JSON.parse(produtoAtual)
+        let produtoAtual = localStorage.getItem(LISTA_PRODUTOS[i].nomeProduto);
+        
+        if (produtoAtual) {
+            produtoAtual = JSON.parse(produtoAtual);
 
-        if (produtoAtual["quantidade"] > 0) {
-            contador += 1;
+            if (produtoAtual["quantidade"] > 0) {
+                contador += 1;
+            }
         }
     }
 
     if(contador != 0){
-        mostrarContadorCarrinho(contador)
+        mostrarContadorCarrinho(contador);
     }
 }
 
