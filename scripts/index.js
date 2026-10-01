@@ -11,31 +11,38 @@ botaoLogin.addEventListener("click", () => {
     window.location.href = "loginUsuario.html" 
 });
 
-function inicializarProdutos() {
-    for (let i = 0; i < LISTA_PRODUTOS.length; i++) {
-        let nomeDoProduto = LISTA_PRODUTOS[i].nomeProduto;
-
-        if (localStorage.getItem(nomeDoProduto) === null) {
-            localStorage.setItem(nomeDoProduto, JSON.stringify(LISTA_PRODUTOS[i]));
-        }
-    }
-}
-
 function adicionarQuantidadeProduto(nomeProduto, quantidadeEscolhida) {
     if (quantidadeEscolhida <= 0) {
         alert("Por favor, adicione pelo menos 1 item.");
         return;
     }
 
-    let valor = localStorage.getItem(nomeProduto);
+    // Busca os dados originais do produto na nossa Base de Dados Centralizada
+    const produtoDb = LISTA_PRODUTOS.find(produto => produto.nomeProduto === nomeProduto);
 
-    if (valor) {
-        let listaOriginal = JSON.parse(valor);
-        listaOriginal["quantidade"] = quantidadeEscolhida;
-        localStorage.setItem(nomeProduto, JSON.stringify(listaOriginal));
-        alert(`${nomeProduto} adicionado ao carrinho!`);
-        contadorItensCarrinho();
+    // Puxa o carrinho atual do localStorage OU cria um array vazio se não existir
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+    // Verifica se o item já foi adicionado ao carrinho antes
+    let indexItem = carrinho.findIndex(item => item.nomeProduto === nomeProduto);
+
+    if (indexItem !== -1) {
+        // Se já existe, apenas atualiza a quantidade
+        carrinho[indexItem].quantidade = quantidadeEscolhida;
+    } else {
+        // Se não existe, cria um novo item no array do carrinho
+        carrinho.push({
+            nomeProduto: produtoDb.nomeProduto,
+            precoProduto: produtoDb.precoProduto,
+            quantidade: quantidadeEscolhida
+        });
     }
+
+    // Salva o carrinho atualizado de volta no navegador
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    
+    alert(`${nomeProduto} adicionado ao carrinho!`);
+    contadorItensCarrinho();
 }
 
 const botaoAlternarMenuLateral = document.querySelector("#botao_menu");
