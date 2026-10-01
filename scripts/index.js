@@ -7,9 +7,45 @@ botaoCarrinho.addEventListener("click", () => {
 });
 
 const botaoLogin = document.querySelector(".fa-circle-user");
-botaoLogin.addEventListener("click", () => {
-    window.location.href = "loginUsuario.html" 
-});
+
+function iniciarSessao() {
+    const usuarioAtivo = JSON.parse(sessionStorage.getItem("usuarioLogado"));
+
+    if (usuarioAtivo) {
+        // Pega apenas o primeiro nome
+        const primeiroNome = usuarioAtivo.nome.split(" ")[0];
+
+        // Cria o elemento de texto para o nome
+        const spanNome = document.createElement("span");
+        spanNome.classList.add("nome-usuario-logado");
+        spanNome.textContent = `Olá, ${primeiroNome}`;
+
+        // Envolve o ícone existente em uma nova div para facilitar o layout
+        const containerAvatar = document.createElement("div");
+        containerAvatar.classList.add("container-avatar");
+        
+        // Insere o container no lugar do ícone original, e depois põe o ícone dentro dele
+        botaoLogin.parentNode.insertBefore(containerAvatar, botaoLogin);
+        containerAvatar.append(botaoLogin);
+        containerAvatar.append(spanNome);
+
+        // Ação de Logout (Sair) clicaando no container inteiro
+        containerAvatar.addEventListener("click", () => {
+            const desejaSair = confirm(`Você está logado como ${usuarioAtivo.nome}. Deseja sair da conta?`);
+            if (desejaSair) {
+                sessionStorage.removeItem("usuarioLogado"); 
+                window.location.reload(); 
+            }
+        });
+    } else {
+        // Comportamento normal se NÃO estiver logado
+        botaoLogin.addEventListener("click", () => {
+            window.location.href = "loginUsuario.html";
+        });
+    }
+}
+
+iniciarSessao();
 
 function adicionarQuantidadeProduto(nomeProduto, quantidadeEscolhida) {
     if (quantidadeEscolhida <= 0) {

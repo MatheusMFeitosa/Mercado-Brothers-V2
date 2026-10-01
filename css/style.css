@@ -92,7 +92,7 @@ label.barra-pesquisa i {
 nav .menu-usuario {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
 
     width: 8%;
     padding-right: 2%;
@@ -696,4 +696,17 @@ label.preencher input::placeholder {
     color: var(--vermelho);
 }
 
+/* Usuario Logado */
+.container-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    gap: 4px;
+}
 
+.nome-usuario-logado {
+    font-weight: 500;
+    white-space: nowrap; 
+}

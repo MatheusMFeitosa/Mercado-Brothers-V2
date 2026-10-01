@@ -2,14 +2,24 @@ let LISTA_USUARIOS_CADASTRADOS = JSON.parse(localStorage.getItem("usuarios")) ||
 
 function verificarLogin() {
     const emailUsuario = document.getElementById("preencher_email").value.trim();
-    const senhaUsuario = document.getElementById("preencher_senha").value;
+    
+    // Aplicamos a mesma máscara para conseguir comparar com o que foi salvo no cadastro
+    const senhaUsuario = btoa(document.getElementById("preencher_senha").value);
 
-    for (let i = 0; i < LISTA_USUARIOS_CADASTRADOS.length; i++) {
-        if (emailUsuario === LISTA_USUARIOS_CADASTRADOS[i].email &&
-            senhaUsuario === LISTA_USUARIOS_CADASTRADOS[i].senha) {
-            return true;
-        }
+    // .find() procura e devolve o usuário inteiro se as informações baterem
+    const usuarioEncontrado = LISTA_USUARIOS_CADASTRADOS.find(u => u.email === emailUsuario && u.senha === senhaUsuario);
+
+    if (usuarioEncontrado) {
+        // O sessionStorage é perfeito para isso pois ele se apaga sozinho quando o usuário fecha a aba
+        const crachaSessao = {
+            nome: usuarioEncontrado.nome,
+            email: usuarioEncontrado.email
+        };
+        
+        sessionStorage.setItem("usuarioLogado", JSON.stringify(crachaSessao));
+        return true;
     }
+    
     return false;
 }
 
