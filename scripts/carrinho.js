@@ -4,68 +4,68 @@ botaoInicio.addEventListener("click", () => {
     window.location.href = "index.html";
 });
 
+function getCarrinho() {
+    return JSON.parse(localStorage.getItem("carrinho")) || [];
+}
+
+function setCarrinho(carrinhoArray) {
+    localStorage.setItem("carrinho", JSON.stringify(carrinhoArray));
+}
+
 function mostrarProdutosTela() {
     const listaProdutosCarrinho = document.querySelector(".lista-produtos-carrinho");
     const botaoFinalizarCompra = document.querySelector(".finalizar-compra");
-
+    
+    // Limpa a tela antes de recriar
     listaProdutosCarrinho.replaceChildren();
-
-    for (let i = 0; i < localStorage.length; i++) {
-        const chave = localStorage.key(i);
-        const listaOriginal = JSON.parse(localStorage.getItem(chave));
-
-        if (listaOriginal["quantidade"] > 0) {
-            adicionarElementosHtml(listaOriginal);
+    
+    const carrinho = getCarrinho();
+    
+    // Mostra itens que têm quantidade maior que zero
+    let carrinhoVazio = true;
+    for (let i = 0; i < carrinho.length; i++) {
+        if (carrinho[i].quantidade > 0) {
+            adicionarElementosHtml(carrinho[i]);
+            carrinhoVazio = false;
         }
     }
 
-    botaoFinalizarCompra.addEventListener("click", () => {
-        let carrinhoVazio = true;
-        for (let i = 0; i < localStorage.length; i++) {
-            const chave = localStorage.key(i);
-            const produto = JSON.parse(localStorage.getItem(chave));
-
-            if (produto["quantidade"] > 0) {
-                carrinhoVazio = false;
-                break;
-            }
-        }
+    // Configura o evento do botão Finalizar
+    botaoFinalizarCompra.onclick = () => { // Usamos .onclick para evitar duplicar listeners caso a tela re-renderize
         if (carrinhoVazio) {
             alert("Seu carrinho está vazio! Adicione produtos antes de finalizar a compra.");
             return;
         }
+        
         alert("Compra finalizada!");
-
-        for (let i = 0; i < localStorage.length; i++) {
-            const chave = localStorage.key(i);
-            const produto = JSON.parse(localStorage.getItem(chave));
-
-            if (produto["quantidade"] > 0) {
-                produto["quantidade"] = 0;
-                localStorage.setItem(chave, JSON.stringify(produto));
-            }
-        }
+        
+        // Esvazia as quantidades do carrinho, mas mantém a estrutura
+        const carrinhoZeradinho = carrinho.map(item => {
+            return { ...item, quantidade: 0 };
+        });
+        
+        setCarrinho(carrinhoZeradinho);
         mostrarProdutosTela();
-    });
+    };
 
     mostrarMensagemCarrinhoVazio();
     atualizarTotalCarrinho();
 }
 
 function atualizarTotalCarrinho() {
+    const carrinho = getCarrinho();
     let total = 0;
 
-    for (let i = 0; i < localStorage.length; i++) {
-        const chave = localStorage.key(i);
-        const produto = JSON.parse(localStorage.getItem(chave));
-
-        if (produto["quantidade"] > 0) {
-            total += produto["precoProduto"] * produto["quantidade"];
+    for (let i = 0; i < carrinho.length; i++) {
+        if (carrinho[i].quantidade > 0) {
+            total += carrinho[i].precoProduto * carrinho[i].quantidade;
         }
     }
 
     const elementoTotal = document.getElementById("valor-total");
-    elementoTotal.textContent = `Total: R$ ${total.toFixed(2)}`;
+    
+    // Utilizando a API nativa de internacionalizacao para formatar moeda Brasileira (BRL)
+    elementoTotal.textContent = `Total: ${total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`;
 }
 
 function adicionarElementosHtml(listaOriginal){
@@ -115,21 +115,16 @@ function adicionarElementosHtml(listaOriginal){
 }
 
 function deletarItem(nomeProduto) {
-    const valor = localStorage.getItem(nomeProduto);
+    let carrinho = getCarrinho();
 
-    if (!valor) {
-        return;
+    // Procura a posição do produto que queremos deletar
+    let indexItem = carrinho.findIndex(item => item.nomeProduto === nomeProduto);
+
+    if (indexItem !== -1) {
+        carrinho[indexItem].quantidade = 0;
+        setCarrinho(carrinho); // Salva de volta no storage
+        mostrarProdutosTela();
     }
-
-    const listaOriginal = JSON.parse(valor);
-    listaOriginal["quantidade"] = 0;
-
-    localStorage.setItem(
-        listaOriginal["nomeProduto"],
-        JSON.stringify(listaOriginal)
-    );
-
-    mostrarProdutosTela();
 }
 
 function mostrarMensagemCarrinhoVazio(){
