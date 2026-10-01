@@ -1,50 +1,17 @@
 import { mostrarProdutosTela } from './produtos.js';
 import { LISTA_PRODUTOS } from "./dadosProdutos.js";
 
+const inputPesquisa = document.getElementById("barra_pesquisa");
 
-const inputSearch = document.getElementById("barra_pesquisa")
-const iconeSearch = document.querySelector(".fa-magnifying-glass")
+inputPesquisa.addEventListener("input", () => {
+    // Pegamos o que o usuário digitou, em minúsculas e sem espaços inúteis
+    const termoBusca = inputPesquisa.value.toLowerCase().trim();
 
-inputSearch.addEventListener("input", () => {
-    mostrarProdutosTela(LISTA_PRODUTOS)
-     conductResearch(inputSearch.value)
-})
+    // Filtramos o Banco de Dados diretamente na memória
+    const produtosFiltrados = LISTA_PRODUTOS.filter((produto) => {
+        const nomeProdutoMinusculo = produto.nomeProduto.toLowerCase();
+        return nomeProdutoMinusculo.includes(termoBusca);
+    });
 
-function conductResearch(researchValue) {
-    const namesOfAllProducts = document.querySelectorAll(".nomeProduto")
-    let productsFound = []
-
-    for (let i = 0; i < namesOfAllProducts.length; i++) {
-
-        const currentProduct = namesOfAllProducts[i].textContent.toLocaleLowerCase()
-
-        if (currentProduct.includes(researchValue.toLocaleLowerCase())) {
-
-            productsFound.push({
-                position: i,
-                itemName: currentProduct
-            })
-        }
-    }
-
-    applySearch(productsFound)
-}
-
-function applySearch(productsFound) {
-    const allProducts = document.querySelectorAll(".produto")
-
-    for (let i = 0; i < allProducts.length; i++) {
-        let found = false
-
-        for (let j = 0; j < productsFound.length; j++) {
-            if (i == productsFound[j].position) {
-                found = true
-                break
-            }
-        }
-
-        if (!found) {
-            allProducts[i].remove()
-        }
-    }
-}
+    mostrarProdutosTela(produtosFiltrados);
+});

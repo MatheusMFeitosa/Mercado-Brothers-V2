@@ -5,6 +5,20 @@ function mostrarProdutosTela(produtosTela) {
     const main = document.querySelector("main");
     main.replaceChildren();
 
+    if (produtosTela.length === 0) {
+        const divVazia = document.createElement("div");
+        
+        divVazia.classList.add("estado-vazio"); 
+        
+        divVazia.innerHTML = `
+            <h2>Nenhum produto encontrado</h2>
+            <p>Tente pesquisar por outro nome ou remover os filtros.</p>
+        `;
+        
+        main.append(divVazia);
+        return; 
+    }
+
     let categorias = [];
 
     for (let i = 0; i < produtosTela.length; i++) {
