@@ -1,30 +1,35 @@
-# Mercadão Brothers
+#  Mercadão Brothers - E-commerce Frontend
 
-Um sistema simples de catálogo de produtos e carrinho de compras feito puramente com HTML, CSS e JavaScript. 
+> Projeto acadêmico focado no desenvolvimento de uma interface frontend para um e-commerce (supermercado), construído inteiramente com HTML, CSS e JavaScript puro.
 
-O projeto simula uma loja virtual onde o usuário pode visualizar produtos divididos por categorias, filtrar os itens, escolher quantidades e gerenciar o seu carrinho de compras de forma dinâmica. Tudo isso salvando os dados no navegador, para que o usuário não perca o carrinho ao mudar de página.
+##  Sobre o Projeto
+Este projeto foi desenvolvido com o objetivo de colocar em prática os fundamentos da programação web. A ideia foi criar a simulação de uma loja virtual funcional desde a criação de conta do utilizador até à adição de produtos no carrinho, focando em manipulação do DOM, gestão de estado com Web Storage e boas práticas de estruturação de CSS.
 
-## Funcionalidades
+##  Funcionalidades Implementadas
 
-- **Catálogo Dinâmico:** Os produtos são gerados na tela via JavaScript e agrupados automaticamente por categoria (Alimentos, Limpeza, Brinquedos, etc.).
-- **Filtro de Categorias:** Um menu lateral permite filtrar os produtos exibidos na tela de forma rápida.
-- **Adição Customizada:** É possível digitar a quantidade exata do produto antes de adicioná-lo ao carrinho.
-- **Carrinho Inteligente:** Uma página dedicada ao carrinho que lista os itens escolhidos, permite excluir produtos, exibe o valor total calculado em tempo real e possui a opção de finalizar a compra.
-- **Persistência de Dados:** Uso do `localStorage` para simular um banco de dados local. Os produtos adicionados continuam no carrinho mesmo se você fechar a aba ou recarregar a página.
+*   **Autenticação Simulada:**
+    *   Página de Registo com validação rigorosa de formulários (tamanho de senha, senhas iguais, campos obrigatórios).
+    *   Página de Login com persistência de dados utilizando `localStorage` (com encriptação em Base64) e `sessionStorage` para controlo de sessão.
+*   **Catálogo Dinâmico:**
+    *   Renderização de 30 produtos através de JavaScript.
+    *   Sistema de filtros laterais em formato *accordion* (por categoria e subcategoria).
+*   **Carrinho de Compras:**
+    *   Adição de itens com ajuste de quantidades.
+    *   Cálculo dinâmico do valor total.
+    *   Remoção de itens e estado visual de "carrinho vazio".
+*   **Interface (UI/UX):**
+    *   Design totalmente responsivo (Desktop, Tablet e Mobile).
+    *   Microinterações e animações suaves (`cubic-bezier`).
+    *   Feedback visual imediato para erros de preenchimento.
 
-## Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
-- **HTML5:** Estrutura semântica das páginas.
-- **CSS3:** Estilização responsiva, animações de entrada e layout com Flexbox.
-- **JavaScript:** Toda a lógica de manipulação do DOM, cálculos e uso do LocalStorage.
-- **FontAwesome:** Biblioteca utilizada para os ícones da interface.
-- **Google Fonts:** Fonte "Poppins" para a tipografia do site.
-
-## Estrutura básica do projeto
-
-- `index.html` -> Página principal com a vitrine de produtos e filtros.
-- `carrinho.html` -> Página de checkout listando os itens e o total.
-- `css/style.css` -> Arquivo único contendo todo o estilo visual da loja.
-- `scripts/index.js` -> Lógica da página principal (renderização e filtros).
-- `scripts/carrinho.js` -> Lógica exclusiva da página do carrinho (cálculos, deleção e finalização).
-- `img/` -> Pasta onde ficam as imagens dos produtos.
+*   **HTML5:** Estrutura semântica e regras de acessibilidade (relacionamento correto entre `labels` e `inputs`).
+*   **CSS3:** 
+    *   Uso intensivo de **Flexbox** para alinhamentos simétricos.
+    *   Variáveis (`:root`) para consistência da palete de cores e sombras.
+    *   Escrita baseada no padrão estrutural "Outside-In" para facilitar a manutenção.
+*   **JavaScript (ES6+):** 
+    *   Módulos (`import/export`) para separação de responsabilidades.
+    *   Métodos modernos de arrays (`filter`, `some`, `forEach`).
+    *   Programação defensiva para evitar erros de manipulação do DOM.
