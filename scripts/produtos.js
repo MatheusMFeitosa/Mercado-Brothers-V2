@@ -106,7 +106,7 @@ function adicionarProdutoHTML(produto, containerDestino) {
     h4Produto.textContent = produto.nomeProduto;
 
     // Descrição
-    descricaoProduto.textContent = "Teste Descrição";
+    descricaoProduto.textContent = produto.descricao;
 
     // Quantidade
     descricaoQuantidade.textContent = "Quantidade";

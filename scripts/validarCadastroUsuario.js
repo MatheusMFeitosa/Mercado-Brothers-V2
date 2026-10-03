@@ -1,5 +1,6 @@
 const formulario = {
     nome: () => document.getElementById("preencher_nome"),
+    email: () => document.getElementById("preencher_email"),
     senha: () => document.getElementById("preencher_senha"),
     confirmarSenha: () => document.getElementById("preencher_confirmar_senha"),
     botaoEntrar: () => document.getElementById("botao_entrar"),

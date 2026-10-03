@@ -96,6 +96,6 @@ botaoAlternarMenuLateral.addEventListener("click", () => {
     }
 });
 
-localStorage.clear()
+localStorage.removeItem("carrinho")
 
 export { adicionarQuantidadeProduto };

@@ -17,96 +17,125 @@
                 <h3>Filtros</h3>
                 <i class="fa-solid fa-sort-down" id="botao_menu"></i>
             </header>
+
             <!-- colocar labels nos filtros -->
+
+            <!-- Arquivo: index.html (Substitua a ul dos filtros) -->
             <ul>
-                <ul>
-                    <!-- ALIMENTOS -->
-                    <li>
-                        <label for="filtros-alimentos" class="filtros">
-                            <input type="checkbox" name="filtros" value="alimentos" id="filtros-alimentos">
-                            Alimentos
+                <!-- ALIMENTOS -->
+                <li>
+                    <label for="filtros-alimentos" class="filtros">
+                        <input type="checkbox" name="filtros" value="alimentos" id="filtros-alimentos">
+                        Alimentos
+                    </label>
+
+                    <div class="subFiltros">
+                        <label for="filtros-hortifruti">
+                            <input type="checkbox" name="subFiltros" value="hortifruti" id="filtros-hortifruti">
+                            Hortifruti
                         </label>
-
-                        <div class="subFiltros">
-                            <label for="filtros-hortifruti">
-                                <input type="checkbox" name="subFiltros" value="hortifruti" id="filtros-hortifruti">
-                                Hortifruti
-                            </label>
-
-                            <label for="filtros-vegetais">
-                                <input type="checkbox" name="subFiltros" value="vegetais" id="filtros-vegetais">
-                                Vegetais
-                            </label>
-
-                            <label for="filtros-graos">
-                                <input type="checkbox" name="subFiltros" value="grãos" id="filtros-graos">
-                                Grãos
-                            </label>
-
-                            <label for="filtros-leguminosas">
-                                <input type="checkbox" name="subFiltros" value="leguminosas" id="filtros-leguminosas">
-                                Leguminosas
-                            </label>
-
-                            <label for="filtros-mercearia">
-                                <input type="checkbox" name="subFiltros" value="mercearia" id="filtros-mercearia">
-                                Mercearia
-                            </label>
-
-                            <label for="filtros-farinhas">
-                                <input type="checkbox" name="subFiltros" value="farinhas" id="filtros-farinhas">
-                                Farinhas
-                            </label>
-
-                            <label for="filtros-cereais">
-                                <input type="checkbox" name="subFiltros" value="cereais" id="filtros-cereais">
-                                Cereais
-                            </label>
-                        </div>
-                    </li>
-
-                    <!-- PRODUTOS DE LIMPEZA -->
-                    <li>
-                        <label for="filtros-produtos-limpeza" class="filtros">
-                            <input type="checkbox" name="filtros" value="limpeza" id="filtros-produtos-limpeza">
-                            Produtos de limpeza
+                        <label for="filtros-vegetais">
+                            <input type="checkbox" name="subFiltros" value="vegetais" id="filtros-vegetais">
+                            Vegetais
                         </label>
-
-                        <div class="subFiltros">
-                            <label for="filtros-cozinha">
-                                <input type="checkbox" name="subFiltros" value="cozinha" id="filtros-cozinha">
-                                Cozinha
-                            </label>
-
-                            <label for="filtros-detergentes">
-                                <input type="checkbox" name="subFiltros" value="detergentes" id="filtros-detergentes">
-                                Detergentes
-                            </label>
-
-                            <label for="filtros-lavanderia">
-                                <input type="checkbox" name="subFiltros" value="lavanderia" id="filtros-lavanderia">
-                                Lavanderia
-                            </label>
-
-                            <label for="filtros-saboes">
-                                <input type="checkbox" name="subFiltros" value="sabões" id="filtros-saboes">
-                                Sabões
-                            </label>
-                        </div>
-                    </li>
-
-                    <!-- BRINQUEDOS -->
-                    <li>
-                        <label for="filtros-brinquedos" class="filtros">
-                            <input type="checkbox" name="filtros" value="brinquedos" id="filtros-brinquedos">
-                            Brinquedos
+                        <label for="filtros-graos">
+                            <input type="checkbox" name="subFiltros" value="grãos" id="filtros-graos">
+                            Grãos
                         </label>
-                    </li>
-                </ul>
-                <div class="acoes-menu-lateral">
-                    <button onclick="filtrarProdutos()">Aplicar filtros</button>
-                    <button onclick="removerFiltros()">Remover filtros</button>
-                </div>
+                        <label for="filtros-leguminosas">
+                            <input type="checkbox" name="subFiltros" value="leguminosas" id="filtros-leguminosas">
+                            Leguminosas
+                        </label>
+                        <label for="filtros-mercearia">
+                            <input type="checkbox" name="subFiltros" value="mercearia" id="filtros-mercearia">
+                            Mercearia
+                        </label>
+                        <label for="filtros-farinhas">
+                            <input type="checkbox" name="subFiltros" value="farinhas" id="filtros-farinhas">
+                            Farinhas
+                        </label>
+                        <label for="filtros-cereais">
+                            <input type="checkbox" name="subFiltros" value="cereais" id="filtros-cereais">
+                            Cereais
+                        </label>
+                    </div>
+                </li>
+
+                <!-- PRODUTOS DE LIMPEZA -->
+                <li>
+                    <label for="filtros-produtos-limpeza" class="filtros">
+                        <input type="checkbox" name="filtros" value="limpeza" id="filtros-produtos-limpeza">
+                        Produtos de limpeza
+                    </label>
+
+                    <div class="subFiltros">
+                        <label for="filtros-cozinha">
+                            <input type="checkbox" name="subFiltros" value="cozinha" id="filtros-cozinha">
+                            Cozinha
+                        </label>
+                        <label for="filtros-banheiro"> <!-- Novo -->
+                            <input type="checkbox" name="subFiltros" value="banheiro" id="filtros-banheiro">
+                            Banheiro
+                        </label>
+                        <label for="filtros-detergentes">
+                            <input type="checkbox" name="subFiltros" value="detergentes" id="filtros-detergentes">
+                            Detergentes
+                        </label>
+                        <label for="filtros-lavanderia">
+                            <input type="checkbox" name="subFiltros" value="lavanderia" id="filtros-lavanderia">
+                            Lavanderia
+                        </label>
+                        <label for="filtros-saboes">
+                            <input type="checkbox" name="subFiltros" value="sabões" id="filtros-saboes">
+                            Sabões
+                        </label>
+                        <label for="filtros-desinfetantes"> <!-- Novo -->
+                            <input type="checkbox" name="subFiltros" value="desinfetantes" id="filtros-desinfetantes">
+                            Desinfetantes
+                        </label>
+                        <label for="filtros-acessorios"> <!-- Novo -->
+                            <input type="checkbox" name="subFiltros" value="acessorios" id="filtros-acessorios">
+                            Acessórios
+                        </label>
+                    </div>
+                </li>
+
+                <!-- BRINQUEDOS -->
+                <li>
+                    <label for="filtros-brinquedos" class="filtros">
+                        <input type="checkbox" name="filtros" value="brinquedos" id="filtros-brinquedos">
+                        Brinquedos
+                    </label>
+                    
+                    <!-- Novas Subcategorias para Brinquedos -->
+                    <div class="subFiltros">
+                        <label for="filtros-veiculos">
+                            <input type="checkbox" name="subFiltros" value="veiculos" id="filtros-veiculos">
+                            Veículos
+                        </label>
+                        <label for="filtros-bonecos">
+                            <input type="checkbox" name="subFiltros" value="bonecos" id="filtros-bonecos">
+                            Bonecos e Bonecas
+                        </label>
+                        <label for="filtros-educativos">
+                            <input type="checkbox" name="subFiltros" value="educativos" id="filtros-educativos">
+                            Educativos
+                        </label>
+                        <label for="filtros-pelucias">
+                            <input type="checkbox" name="subFiltros" value="pelucias" id="filtros-pelucias">
+                            Pelúcias
+                        </label>
+                        <label for="filtros-tabuleiro">
+                            <input type="checkbox" name="subFiltros" value="tabuleiro" id="filtros-tabuleiro">
+                            Jogos de Tabuleiro
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            <div class="acoes-menu-lateral">
+                <button onclick="filtrarProdutos()">Aplicar filtros</button>
+                <button onclick="removerFiltros()">Remover filtros</button>
+            </div>
         </div>
 
         <div class="conteiner-barra-pesquisa">
@@ -117,9 +146,16 @@
         </div>
         <div class="menu-usuario">
             <i class="fa-solid fa-circle-user"></i>
-            <i class="fa-solid fa-cart-shopping"  data-after=""></i>
+            <i class="fa-solid fa-cart-shopping" data-after=""></i>
         </div>
     </nav>
+
+    <header class="banner-destaque">
+        <div class="banner-conteudo">
+            <h2>Ofertas Especiais da Semana</h2>
+            <p>Compre online e receba no conforto da sua casa com frete grátis nas compras acima de R$ 100.</p>
+        </div>
+    </header>
 
     <main></main>
 
